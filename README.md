@@ -1,6 +1,5 @@
-# hello-world
-First repository for testing
+# Speech separation using Neural Networks
+This repository currently holds my files for speech separation. Currently there are just some testing files.
 
-Hello. I am just testing github.
-
-THis is a second line for testing.
+## SpectrogramExample
+SpectrogramExample.py will show how to obtain a Spectrogram in python and also how to apply a mask to the spectrogram.
