@@ -1,5 +1,5 @@
 # Speech separation using Neural Networks
-This repository currently holds my files for speech separation. Currently there are just some testing files.
+This repository currently holds my files for speech separation.
 
-## SpectrogramExample.py
-SpectrogramExample.py will show how to obtain a Spectrogram in python and also how to apply a mask to the spectrogram.
+## Spectrogram_separation.py
+This file shows how to separate sound files using t-f masking.
