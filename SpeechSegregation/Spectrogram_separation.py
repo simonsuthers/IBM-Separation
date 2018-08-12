@@ -21,8 +21,9 @@ from math import ceil
 
 #%% Import 2 wav files
 
-filepath = "C:/Users/User/OneDrive - City, University of London/Dissertation/TIMIT_WAV/"
-#filepath = "C:/Users/Simon.Suthers/OneDrive - City, University of London/Dissertation/TIMIT_WAV"
+filepath = "C:/PathToFiles/"
+
+picturepath = "C:/PathToFiles/"
 
 file1 = filepath + "/TRAIN/DR1/FDAW0/SA1.WAV";
 file2 = filepath + "/TRAIN/DR1/MCPM0/SA2.WAV";
@@ -72,15 +73,18 @@ x = np.arange(0, (len(mixed_series) / sample_rate1), (1 / sample_rate1))
 
 #Show wav file on chart
 fig = plt.figure()
-fig, (ax1, ax2) = plt.subplots(2, sharey=True)
+fig, (ax1, ax2) = plt.subplots(2, figsize=(6,5), sharey=True)
 
 ax1.plot(x, mixed_series, color="green", alpha = 0.8)
 ax1.set(title='Mixture wav files', ylabel='Amplitude')
+ax1.legend(['Combined signals'])
 
 ax2.plot(x, samples1, color="blue", alpha = 0.5)
 ax2.plot(x, samples2, color="red", alpha = 0.5)
 ax2.set(xlabel='Time [sec]', ylabel='Amplitude')
+ax2.legend(['Signal 1', 'Signal 2'])
 
+fig.savefig(picturepath + "mixturesignals.png", bbox_inches="tight")
 plt.show()
 plt.close(fig)
 
@@ -111,6 +115,7 @@ ax3.pcolormesh(t2, f2, np.abs(Zsamples2))
 ax3.set(title='Signal 2', xlabel='Time [sec]')
 
 plt.tight_layout()
+fig.savefig(picturepath + "spectrograms.png", bbox_inches="tight")
 plt.show()
 plt.close(fig)
 
@@ -122,7 +127,7 @@ Zsample = Zsamples2
 sample = samples2
 
 #Calculate signal to noise ratio of clean signal versus combined signal
-snr = np.divide(np.real(Zsample), np.real(Zmixed_series))
+snr = np.divide(np.real(np.abs(Zsample)), np.real(np.abs(Zmixed_series)))
 #round snr to 0 or 1 to create binary mask
 mask = np.around(snr, 0)
 
@@ -143,6 +148,7 @@ Zsamplesmaked = np.multiply(Zmixed_series, mask)
 fig = plt.figure() 
 plt.imshow(mask, cmap='Greys', interpolation='none')
 
+fig.savefig(picturepath + "mask.png", bbox_inches="tight")
 plt.show()
 plt.close(fig)
 
@@ -155,10 +161,11 @@ _, samplesrec = signal.istft(Zsamplesmaked, sample_rate1)
 
 fig = plt.figure()
 plt.plot(x, sample, color="red", alpha = 0.6)
-plt.plot(x, samplesrec, color="blue", alpha = 0.5)
+plt.plot(x, samplesrec, color="blue", alpha = 0.4)
 plt.xlabel('Time [sec]')
 plt.ylabel('Signal')
 plt.legend(['Original', 'Recovered via STFT'])
+fig.savefig(picturepath + "recoverdsignal.png", bbox_inches="tight")
 plt.show()
 plt.close(fig)
 
