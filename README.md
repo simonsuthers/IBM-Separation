@@ -3,7 +3,7 @@
 This file uses two speech files as an input, combines them, and uses an Ideal Binary Mask to separate them again.
 The two speech files are both padded with zeros to make them the same length, and further padded to pad the length to the nearest whole second. This was done to make implementing the STFT and iSTFT easier. 
 
-![alt text](https://github.com/simonsuthers/SpeechSegregation/tree/master/SpeechSegregation/SpeechSegregationPictures/mixturesignals.png "Mixture signals")
+![Alt text](SpeechSegregation/SpeechSegregationPictures/mixturesignals.png?raw=true "Mixture signals")
 
 A STFT was then applied to the to the 2 speech signals and the mixture signal using a 0.05 second window.
 
