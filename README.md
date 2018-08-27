@@ -1,4 +1,4 @@
-# Speech separation using Neural Networks
+# Speech separation using Ideal Binary Masks
 ## Spectrogram_separation.py
 This file uses two speech files as an input, combines them, and uses an Ideal Binary Mask to separate them again.
 The two speech files are both padded with zeros to make them the same length, and further padded to pad the length to the nearest whole second. This was done to make implementing the STFT and iSTFT easier. 
