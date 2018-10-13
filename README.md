@@ -11,11 +11,11 @@ A STFT was then applied to the 2 speech signals and the mixture signal using a 0
 
 A mask was then calculated using the SNR of the absolute value of the STFT of the clean signal of one of the speech signals divided by the absolute value of the STFT of the mixture signal. An IBM was created rounding this mask to the nearest integer and then applying a ceiling function so that any number greater than 1 was given the value 1.
 
-![Alt text](IBM-Separation/IBM-Separation-Pictures/mask.png?raw=true "Mask")
+![Alt text](IBM-Separation-Pictures/mask.png?raw=true "Mask")
 
 The mixture signal is then combined with the mask using element-wise multiplication (Hadamard product). An iSTFT is then applied to the resulting array to obtain the original speech signal.
 
-![Alt text](IBM-Separation/IBM-Separation-Pictures/recoverdsignal.png?raw=true "Recovered signal")
+![Alt text](IBM-Separation-Pictures/recoverdsignal.png?raw=true "Recovered signal")
 
 ### Sources
 http://scipy.github.io/devdocs/generated/scipy.signal.stft.html
